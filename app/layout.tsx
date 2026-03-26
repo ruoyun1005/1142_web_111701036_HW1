@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,11 +25,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="zh-Hant" className="h-full antialiased">
+      <body className="min-h-full">
+      <div className="flex h-full">
+      
+      
+      {/* 左邊 */}
+      <div className="bg-white w-[320px] h-full p-4">
+        
+        <div className="flex justify-center items-center w-full">
+          <div className="bg-gray-200 w-[80px] h-[80px] rounded-full overflow-hidden flex justify-center items-center m-auto">
+          <Image src="/IMG_0259.jpg" alt="tomato" width={80} height={80} className=""/>
+        </div>
+        </div>
+        
+        <div className="text-center">名字</div>
+        <div className="text-center">簡介</div>
+
+        <div className="flex gap-2">
+          <div>社群連結</div>
+          <div>社群連結</div>
+          <div>社群連結</div>
+          <div>社群連結</div>
+        </div>
+
+        <Link href="/about">
+          <div className="bg-gray-300 p-[16px] rounded-md mt-2">關於我</div>
+        </Link>
+
+        <Link href="/hobby">
+          <div className="bg-gray-300 p-[16px] rounded-md mt-2">興趣</div>
+        </Link>
+
+        <Link href="/code">
+          <div className="bg-gray-300 p-[16px] rounded-md mt-2">程式專案</div>
+        </Link>
+
+        <Link href="/paint">
+          <div className="bg-gray-300 p-[16px] rounded-md mt-2">插畫專案</div>
+        </Link>
+        
+        
+      </div>
+
+      <div className="bg-gray-200 w-full h-screen">
+        {children}
+        </div> 
+    </div>
+      </body>
     </html>
+    
+    
   );
 }
